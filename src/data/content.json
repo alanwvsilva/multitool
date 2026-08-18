@@ -1,0 +1,20 @@
+[
+  {
+    "key": "password-generator",
+    "title": "Password Generator",
+    "description": "Generates a random password in different formats.",
+    "url": "/tool/password-generator"
+  },
+  {
+    "key": "uuid-generator",
+    "title": "UUID Generator",
+    "description": "Generates a UUID v4 (Universally Unique Identifier).",
+    "url": "/tool/uuid-generator"
+  },
+  {
+    "key": "rule-of-three",
+    "title": "Rule of Three",
+    "description": "Calculates the Rule of Three for a given number.",
+    "url": "/tool/rule-of-three"
+  }
+]
