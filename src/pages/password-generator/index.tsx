@@ -1,6 +1,6 @@
 import { CheckIcon, CopyIcon, RefreshCcwIcon } from "lucide-react";
 import ToolLayout from "@/layouts/tool-layout";
-import { Button, Input, toast } from "@heroui/react";
+import { Button, Input, toast, Tooltip } from "@heroui/react";
 import { useEffect, useState } from "react";
 import { Slider } from "@heroui/react";
 import { CheckboxGroup, Checkbox, Label } from "@heroui/react";
@@ -38,27 +38,38 @@ export default function PasswordGeneratorPage() {
         <div className="w-full flex items-center gap-2">
           <Input className="w-full text-3xl" value={password} readOnly />
 
-          <Button
-            isIconOnly
-            variant="primary"
-            onClick={() => setPassword(generatePassword())}
-          >
-            <RefreshCcwIcon />
-          </Button>
+          <Tooltip delay={0}>
+            <Button
+              isIconOnly
+              variant="primary"
+              onClick={() => setPassword(generatePassword())}
+            >
+              <RefreshCcwIcon />
+            </Button>
 
-          <Button
-            isIconOnly
-            variant="secondary"
-            onClick={() => {
-              copy(password);
-              toast("Copied to clipboard", {
-                timeout: 1500,
-                indicator: <CheckIcon />,
-              });
-            }}
-          >
-            <CopyIcon />
-          </Button>
+            <Tooltip.Content>
+              <p>Generate new password</p>
+            </Tooltip.Content>
+          </Tooltip>
+
+          <Tooltip delay={0}>
+            <Button
+              isIconOnly
+              variant="secondary"
+              onClick={() => {
+                copy(password);
+                toast("Copied to clipboard", {
+                  timeout: 1500,
+                  indicator: <CheckIcon />,
+                });
+              }}
+            >
+              <CopyIcon />
+            </Button>
+            <Tooltip.Content>
+              <p>Copy password to clipboard</p>
+            </Tooltip.Content>
+          </Tooltip>
         </div>
 
         <div className="flex gap-12">
