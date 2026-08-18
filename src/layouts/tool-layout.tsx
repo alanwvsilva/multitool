@@ -1,7 +1,7 @@
 import { Button } from "@heroui/react";
 import { ArrowLeftIcon, PocketKnifeIcon } from "lucide-react";
 import content from "@/data/content.json";
-import { Link } from "wouter";
+import { useLocation } from "wouter";
 
 export default function ToolLayout({
   toolKey,
@@ -10,6 +10,7 @@ export default function ToolLayout({
   toolKey: string;
   children: React.ReactNode;
 }) {
+  const [, navigate] = useLocation();
   const toolData = content.find((tool) => tool.key === toolKey);
   const title = toolData?.title;
   const description = toolData?.description;
@@ -20,12 +21,10 @@ export default function ToolLayout({
         <PocketKnifeIcon className="size-10" />
         <h2 className="text-4xl font-bold">{title}</h2>
 
-        <Link href="/">
-          <Button>
-            <ArrowLeftIcon />
-            Back
-          </Button>
-        </Link>
+        <Button onClick={() => navigate("/")}>
+          <ArrowLeftIcon />
+          Back
+        </Button>
       </div>
 
       <div className="space-y-2">
